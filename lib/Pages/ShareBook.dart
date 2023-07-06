@@ -120,7 +120,7 @@ class FilterbyCategories extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(20),
                                 child: Image.network(
                                   book.urlImage,
-                                  height: 180,
+                                  height: 160,
                                   fit: BoxFit.cover,
                                 ),
                               ),

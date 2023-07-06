@@ -21,11 +21,22 @@ class HeaderHome extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Icon(
-              Icons.menu_rounded,
-              size: 30,
-              color: Colors.black,
-            ),
+            shearch.categorieSelec.categorie.isEmpty
+                ? const Icon(
+                    Icons.menu_rounded,
+                    size: 30,
+                    color: Colors.black,
+                  )
+                : Container(
+                    padding: const EdgeInsets.only(left: 40),
+                    alignment: Alignment.centerLeft,
+                    child: IconButton(
+                        onPressed: () => shearch.clearCategorie(),
+                        icon: const Icon(
+                          Icons.arrow_back_ios_new,
+                          color: Colors.black,
+                        )),
+                  ),
             Text(
               "Home",
               style: Theme.of(context).textTheme.titleSmall,
@@ -53,16 +64,7 @@ class HeaderHome extends StatelessWidget {
                       hintText: "Titles, Authors, or topics"),
                 ),
               )
-            : Container(
-                padding: const EdgeInsets.only(left: 40),
-                alignment: Alignment.centerLeft,
-                child: IconButton(
-                    onPressed: () => shearch.clearCategorie(),
-                    icon: const Icon(
-                      Icons.arrow_back_ios_new,
-                      color: Colors.black,
-                    )),
-              ),
+            : Container(),
         const SizedBox(height: 20),
       ],
     );
@@ -105,7 +107,7 @@ class CategorieSeccion extends StatelessWidget {
           height: 20,
         ),
         SizedBox(
-            height: 240,
+            height: 380,
             child: Wrap(
               spacing: 20,
               runSpacing: 20,
@@ -227,7 +229,7 @@ class BookofDaySeccion extends StatelessWidget {
       children: [
         Container(
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: SECUNDARY),
-          height: 450,
+          height: 350,
           padding: const EdgeInsets.all(20),
           width: double.infinity,
           child: AnimatedSwitcher(
@@ -262,6 +264,7 @@ class BookofDaySeccion extends StatelessWidget {
                         ],
                       ),
                       MaterialButton(
+                        padding: EdgeInsets.zero,
                         onPressed: () => Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => BookDetails(
                                   book_Info: BookHome(
@@ -283,20 +286,20 @@ class BookofDaySeccion extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(20),
                                   child: Image.network(
                                     bookOfDay.urlImage,
-                                    height: 280,
+                                    height: 180,
                                     fit: BoxFit.cover,
                                   ),
                                 ),
                               ),
                               SizedBox(
-                                width: 180,
-                                height: 280,
+                                width: 125,
+                                height: 180,
                                 child: Text(
                                   bookOfDay.description,
                                   textAlign: TextAlign.justify,
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 12,
-                                  style: themeData.textTheme.bodySmall?.copyWith(fontSize: 16, color: Colors.black),
+                                  style: themeData.textTheme.bodySmall?.copyWith(fontSize: 15, color: Colors.black),
                                 ),
                               )
                             ],
